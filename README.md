@@ -74,7 +74,7 @@ A cada intervalo (~500ms):
 
 ---
 
-## Esquemático de Conexão (Sugestão)
+## Esquemático de Conexão 
 
 | Componente         | Pino Arduino |
 |--------------------|-------------|
