@@ -28,9 +28,9 @@ O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxi
 ## Funcionalidades Principais
 
 - **Medição do nível da água:** Utiliza sensor ultrassônico para identificar a altura da água.
-- **Leitura da umidade:** Mede a umidade do solo via sensor analógico.
+- **Leitura da umidade:** Mede a umidade do ar via sensor analógico DHT11.
 - **Alertas visuais e sonoros:** LEDs e buzzer sinalizam o grau de perigo de alagamento.
-- **Exibição de informações:** Dois displays LCD mostram o nível da água, umidade e previsões.
+- **Exibição de informações:** Dois displays LCD mostram o nível da água, umidade e previsões para a enchente.
 - **Média móvel:** O sistema suaviza leituras usando buffers circulares para maior confiabilidade.
 
 ---
