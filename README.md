@@ -1,5 +1,7 @@
 # Medidor nível da água
 
+![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
+
 Este projeto utiliza sensores de luz (LDR), sensor de distância ultrassônico (HC-SR04) e um sensor de umidade (DHT11), integrados com Arduino UNO, para monitorar o nível da água em enchentes e controlar LEDs, um buzzer e dois displays LCD, com base em diferentes condições.
 
 ## Autores
@@ -98,11 +100,6 @@ A cada intervalo (~500ms):
 | LED Vermelho       | 13          |
 | Buzzer             | 10          |
 
----
-
-## Exemplo Visual
-
-![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
 
 ---
 
