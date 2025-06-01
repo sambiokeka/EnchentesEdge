@@ -1,4 +1,4 @@
-# sensorOndas.ino – Detalhamento do Código
+Detalhamento do Código
 
 Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O programa utiliza sensores de umidade e ultrassônicos para medir o nível da água e umidade do solo, exibindo essas informações em dois displays LCD, acionando LEDs de alerta e um buzzer em situações de risco.
 
@@ -94,4 +94,6 @@ A cada intervalo (~500ms):
 | Buzzer             | 10          |
 
 ---
+
+![image](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
 
