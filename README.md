@@ -4,6 +4,23 @@ Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar ci
 
 ---
 
+## Autores
+
+- Erick Jooji (RM: 564482)
+- Luiz Dalboni (RM: 564189)
+- Matheus Tozarelli (RM: 563490)
+- Rafael Lorenzini (RM: 563643)
+
+---
+
+## Ferramentas e Tecnologias
+
+- **Linguagem de programação:** C++
+- **Placa:** Arduino UNO
+- **Simulação:** [Tinkercad - Projeto SensorLuz](https://www.tinkercad.com/things/1FLMw0RI0Qp/editel?sharecode=3U-bvGk7_IB4qhG56tbSyutXl7edE_MXuUWwf2XKvjU)
+
+---
+
 ## Funcionalidades Principais
 
 - **Medição do nível da água:** Utiliza um sensor ultrassônico para identificar a altura da água.
@@ -33,13 +50,13 @@ Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar ci
 Converte o tempo de resposta do sensor ultrassônico em centímetros.
 
 #### **inicializaBuffers**
-Preenche os buffers de médias iniciais para evitar leituras erráticas ao ligar.
+Preenche os buffers de médias iniciais para evitar leituras ao ligar.
 
 #### **calculaMedia**
 Calcula a média dos valores em um buffer.
 
 #### **atualizaMedias**
-Atualiza os buffers circulares e calcula as médias de umidade e altura.
+Atualiza os buffers e calcula as médias de umidade e altura.
 
 #### **processaUMIDADE / processaALTURA**
 Classifica as leituras em cenários de risco (baixa, média ou alta umidade/nível de água).
@@ -47,7 +64,7 @@ Classifica as leituras em cenários de risco (baixa, média ou alta umidade/nív
 #### **atualizaDisplay**
 Alterna as informações mostradas nos displays LCD a cada 5 segundos, exibindo:
 - Nível da água e grau de perigo.
-- Umidade e previsão de tendência (aumentar/diminuir).
+- Umidade e previsão de tendência (aumentar enchente /diminuir enchente).
 
 ### 4. Loop Principal
 
