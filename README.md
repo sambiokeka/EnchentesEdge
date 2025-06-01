@@ -37,8 +37,7 @@ O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxi
 
 ## Componentes Utilizados
 
-- **1** Resistor de 1kΩ (para o LDR)
-- **7** Resistores de 220Ω (para os LEDs)
+- **3** Resistores de 220Ω (para os LEDs)
 - **25** Jumpers
 - **3** LEDs (Vermelho, Amarelo, Verde)
 - **1** Buzzer
