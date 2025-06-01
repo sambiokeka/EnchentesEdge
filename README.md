@@ -78,27 +78,3 @@ A cada intervalo (~500ms):
 
 ---
 
-## Como Usar
-
-1. Faça o upload do código `sensorOndas.ino` para seu Arduino.
-2. Conecte os sensores, LEDs, buzzer e displays conforme a tabela acima.
-3. Alimente o sistema e observe a leitura nos displays e os alertas visuais/sonoros.
-4. O sistema alterna automaticamente entre informações de nível d’água/perigo e umidade/previsão.
-
----
-
-## Possíveis Melhorias
-
-- Adicionar comunicação sem fio para enviar alertas remotos.
-- Registro de histórico de leituras em cartão SD.
-- Integração com outros sensores ambientais.
-
----
-
-## Licença
-
-Este projeto está sob a licença MIT.
-
----
-
-**Autor:** Projeto EnchentesEdge – sambiokeka
