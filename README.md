@@ -35,6 +35,18 @@ O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxi
 
 ---
 
+## Componentes Utilizados
+
+- **1** Resistor de 1kΩ (para o LDR)
+- **7** Resistores de 220Ω (para os LEDs)
+- **25** Jumpers
+- **3** LEDs (Vermelho, Amarelo, Verde)
+- **1** Buzzer
+- **1** DHT11 (Para sensor de Umidade)
+- **2** Displays LCD com módulo I2C
+
+---
+
 ## Estrutura do Código
 
 ### 1. Bibliotecas e Definições
