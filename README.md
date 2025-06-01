@@ -21,7 +21,7 @@ Este projeto utiliza sensores de luz (LDR), sensor de distância ultrassônico (
 
 ## Descrição Geral
 
-O **Medidor de Enchentes** é parte do projeto EnchentesEdge, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O sistema monitora o nível de água e a umidade do solo e apresenta informações em tempo real nos displays LCD, acionando alertas visuais e sonoros conforme o risco identificado.
+O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O sistema monitora o nível de água e a umidade do solo e apresenta informações em tempo real nos displays LCD, acionando alertas visuais e sonoros conforme o risco identificado.
 
 ---
 
