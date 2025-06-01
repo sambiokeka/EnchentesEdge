@@ -1,8 +1,3 @@
-Detalhamento do Código
-
-Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O programa utiliza sensores de umidade e ultrassônicos para medir o nível da água e umidade do solo, exibindo essas informações em dois displays LCD, acionando LEDs de alerta e um buzzer em situações de risco.
-
----
 
 ## Autores
 
@@ -18,6 +13,12 @@ Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar ci
 - **Linguagem de programação:** C++
 - **Placa:** Arduino UNO
 - **Simulação:** [Tinkercad - Projeto SensorLuz](https://www.tinkercad.com/things/1FLMw0RI0Qp/editel?sharecode=3U-bvGk7_IB4qhG56tbSyutXl7edE_MXuUWwf2XKvjU)
+
+---
+
+# Detalhamento do Código
+
+Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O programa utiliza sensores de umidade e ultrassônicos para medir o nível da água e umidade do solo, exibindo essas informações em dois displays LCD, acionando LEDs de alerta e um buzzer em situações de risco.
 
 ---
 
