@@ -2,9 +2,6 @@
 
 Este projeto utiliza sensores de luz (LDR), sensor de distância ultrassônico (HC-SR04) e um sensor de umidade (DHT11), integrados com Arduino UNO, para monitorar o nível da água em enchentes e controlar LEDs, um buzzer e dois displays LCD, com base em diferentes condições.
 
-![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
-
-
 ## Autores
 
 - Erick Jooji (RM: 564482)
@@ -113,18 +110,4 @@ A cada intervalo (~500ms):
 
 ---
 
-## Possíveis Melhorias
-
-- Adicionar comunicação sem fio para envio de alertas remotos.
-- Registro das leituras em cartão SD.
-- Integração com outros sensores ambientais (ex: pluviômetro).
-
----
-
-## Licença
-
-Este projeto está sob a licença MIT.
-
----
-
-**Equipe:** Projeto EnchentesEdge – sambiokeka
+![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
