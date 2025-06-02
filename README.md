@@ -41,6 +41,7 @@ O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxi
 - **25** Jumpers
 - **3** LEDs (Vermelho, Amarelo, Verde)
 - **1** Buzzer
+- **1** Sensor de distância ultrassônica (HC-SR04)
 - **1** DHT11 (Para sensor de Umidade)
 - **2** Displays LCD com módulo I2C
 
