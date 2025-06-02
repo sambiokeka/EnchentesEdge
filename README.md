@@ -29,11 +29,11 @@ O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Glo
 
 ## Funcionalidades
 
-- **Medição do nível da água:** Sensor HC-SR04 calcula a altura da lâmina d'água.  
-- **Medição da umidade atmosférica:** Sensor de umidade do solo detecta a umidade relativa do solo.  
-- **Alertas visuais e sonoros:** LEDs e buzzer indicam o nível de risco.  
-- **Displays LCD:** Exibem o status atual do nível da água e umidade.  
-- **Média móvel:** Leitura contínua e suavizada via buffers circulares.
+- **Medição do nível da água:** Sensor HC-SR04 calcula a altura da lâmina d'água.
+- **Medição da umidade do solo:** Sensor de umidade do solo detecta a umidade relativa do solo.
+- **Alertas visuais e sonoros:** LEDs e buzzer indicam o nível de risco.
+- **Displays LCD:** Exibem o status atual do nível da água e umidade.
+- **Média móvel:** Leitura contínua e suavizada via buffers circulares (3 para altura e 5 para umidade do solo).
 
 ---
 
@@ -53,37 +53,37 @@ O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Glo
 
 ### 1. Bibliotecas e Configurações Iniciais
 
-- `LiquidCrystal_I2C`: Comunicação com displays LCD.  
+- `LiquidCrystal_I2C`: Comunicação com displays LCD.
 - Definições dos pinos utilizados e variáveis de controle.
 
 ### 2. Inicialização de Componentes
 
-- Criação dos objetos dos LCDs.  
-- Definição dos pinos dos sensores, LEDs e buzzer.  
+- Criação dos objetos dos LCDs.
+- Definição dos pinos dos sensores, LEDs e buzzer.
 - Inicialização dos buffers circulares.
 
 ### 3. Funções Principais
 
-- **`microsegundosParaCentimetros()`** – Converte tempo do ultrassônico em centímetros.  
-- **`inicializaBuffers()`** – Preenche buffers com leituras iniciais.  
-- **`calculaMedia()`** – Calcula média de valores em buffers.  
-- **`atualizaMedias()`** – Atualiza e calcula novas médias de leitura.  
-- **`processaUmidadeSOLO()` / `processaALTURA()`** – Classifica risco com base em médias.  
-- **`atualizaDisplay()`** – Alterna conteúdo dos LCDs entre:  
-  - Nível da água e risco.  
-  - Umidade do ar e previsão (subida/queda da enchente).
+- **`microsegundosParaCentimetros()`** – Converte tempo do ultrassônico em centímetros.
+- **`inicializaBuffers()`** – Preenche buffers com leituras iniciais.
+- **`calculaMedia()`** – Calcula média de valores em buffers.
+- **`atualizaMedias()`** – Atualiza e calcula novas médias de leitura.
+- **`processaUmidadeSOLO()` / `processaALTURA()`** – Classifica risco com base em médias.
+- **`atualizaDisplay()`** – Alterna conteúdo dos LCDs entre:
+  - Nível da água e risco.
+  - Umidade do solo e previsão (subida/queda da enchente).
 
 ### 4. Loop Principal
 
 Executado a cada ~500ms:
 
-- Ativa o sensor ultrassônico e mede a altura da água.  
-- Lê a umidade com o DHT11.  
-- Calcula as médias e atualiza status de risco.  
-- Aciona o LED correspondente:  
-  - **Verde:** Nível seguro  
-  - **Amarelo:** Alerta  
-  - **Vermelho + Buzzer:** Perigo iminente  
+- Ativa o sensor ultrassônico e mede a altura da água.
+- Lê a umidade do solo.
+- Calcula as médias e atualiza status de risco.
+- Aciona o LED correspondente:
+  - **Verde:** Nível seguro
+  - **Amarelo:** Alerta
+  - **Vermelho + Buzzer:** Perigo 
 - Exibe informações nos displays LCD.
 
 ---
@@ -92,7 +92,7 @@ Executado a cada ~500ms:
 
 | Componente           | Pino Arduino |
 |----------------------|--------------|
-| Sensor Ultrassônico  | 7            |
+| Sensor Ultrassônico  | 7 (ver nota abaixo) |
 | Sensor Umidade       | A0           |
 | LCD 1                | I2C (39)     |
 | LCD 2                | I2C (38)     |
@@ -101,14 +101,16 @@ Executado a cada ~500ms:
 | LED Vermelho         | 13           |
 | Buzzer               | 10           |
 
+
 ---
 
 ## Como Usar
 
-1. Faça upload do código `sensorOndas.ino` para o Arduino UNO.  
-2. Conecte os sensores, LEDs, buzzer e displays conforme a tabela acima.  
-3. Alimente o sistema e monitore os alertas nos displays, LEDs e buzzer.  
+1. Faça upload do código `sensorOndas.ino` para o Arduino UNO.
+2. Conecte os sensores, LEDs, buzzer e displays conforme a tabela acima.
+3. Alimente o sistema e monitore os alertas nos displays, LEDs e buzzer.
 4. O sistema alterna automaticamente entre as leituras de altura e umidade.
 
 ---
-![image](https://github.com/user-attachments/assets/a311f62e-ce59-44b0-81bb-dea827d49336)
+
+![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
