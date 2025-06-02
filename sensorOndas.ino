@@ -37,7 +37,7 @@ String casoAtualUmidadeSOLO = "";
 String casoAtualALTURA = "";
 
 float umidadeSoloBuffer[5] = {0};
-float alturaBuffer[3] = {0};   // agora só 3 posições
+float alturaBuffer[3] = {0};  
 int umidadeSoloIndex = 0;
 int alturaIndex = 0;
 
@@ -67,7 +67,7 @@ void atualizaMedias(float umidadeSolo, float altura, float &umidadeSoloMedia, fl
   umidadeSoloIndex = (umidadeSoloIndex + 1) % 5;
 
   alturaBuffer[alturaIndex] = altura;
-  alturaIndex = (alturaIndex + 1) % 3; // só 3 amostras
+  alturaIndex = (alturaIndex + 1) % 3;
 
   umidadeSoloMedia = calculaMedia(umidadeSoloBuffer, 5);
   alturaMedia = calculaMedia(alturaBuffer, 3);
