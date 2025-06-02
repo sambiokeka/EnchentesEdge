@@ -58,7 +58,7 @@ Calcula a média dos valores em um buffer.
 #### **atualizaMedias**
 Atualiza os buffers e calcula as médias de umidade e altura.
 
-#### **processaUMIDADE / processaALTURA**
+#### **processaUmidadeSOLO / processaALTURA**
 Classifica as leituras em cenários de risco (baixa, média ou alta umidade/nível de água).
 
 #### **atualizaDisplay**
