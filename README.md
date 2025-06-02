@@ -111,5 +111,4 @@ Executado a cada ~500ms:
 4. O sistema alterna automaticamente entre as leituras de altura e umidade.
 
 ---
-
-![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
+![image](https://github.com/user-attachments/assets/a311f62e-ce59-44b0-81bb-dea827d49336)
