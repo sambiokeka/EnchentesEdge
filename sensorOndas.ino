@@ -12,6 +12,8 @@ const int sensor = 7;
 int ledVerde = 11;
 int ledAmarelo = 12;
 int ledVermelho = 13;
+ 
+int alturaDoSensor = 330;  //altura do sensor em relação ao chão 
 
 int buzzer = 10;
 long duracao;
@@ -35,7 +37,7 @@ String casoAtualUmidadeSOLO = "";
 String casoAtualALTURA = "";
 
 float umidadeSoloBuffer[5] = {0};
-float alturaBuffer[5] = {0};
+float alturaBuffer[3] = {0};   // agora só 3 posições
 int umidadeSoloIndex = 0;
 int alturaIndex = 0;
 
@@ -46,6 +48,8 @@ float microsegundosParaCentimetros(long microsegundos) {
 void inicializaBuffers() {
   for (int i = 0; i < 5; i++) {
     umidadeSoloBuffer[i] = map(analogRead(A2), 0, 1023, 0, 100);
+  }
+  for (int i = 0; i < 3; i++) {
     alturaBuffer[i] = 0;
   }
 }
@@ -63,10 +67,10 @@ void atualizaMedias(float umidadeSolo, float altura, float &umidadeSoloMedia, fl
   umidadeSoloIndex = (umidadeSoloIndex + 1) % 5;
 
   alturaBuffer[alturaIndex] = altura;
-  alturaIndex = (alturaIndex + 1) % 5;
+  alturaIndex = (alturaIndex + 1) % 3; // só 3 amostras
 
   umidadeSoloMedia = calculaMedia(umidadeSoloBuffer, 5);
-  alturaMedia = calculaMedia(alturaBuffer, 5);
+  alturaMedia = calculaMedia(alturaBuffer, 3);
 }
 
 void setup() {
@@ -96,9 +100,9 @@ void processaUmidadeSOLO(float umidadeSoloMedia) {
 }
 
 void processaALTURA(float alturaMedia) {
-  if (alturaMedia < 10) {
+  if (alturaMedia < 30) {
     casoAtualALTURA = "1";
-  } else if (alturaMedia < 30) {
+  } else if (alturaMedia < 60) {
     casoAtualALTURA = "2";
   } else {
     casoAtualALTURA = "3";
@@ -182,7 +186,7 @@ void loop() {
 
     if (casoAtualALTURA == "1") {
       digitalWrite(ledVerde, HIGH);
-	  noTone(buzzer);
+      noTone(buzzer);
     } else if (casoAtualALTURA == "2") {
       digitalWrite(ledAmarelo, HIGH);
       tone(buzzer, 200);
@@ -194,11 +198,13 @@ void loop() {
     pinMode(sensor, INPUT);
     duracao = pulseIn(sensor, HIGH);
 
-    altura = microsegundosParaCentimetros(duracao);
-
+    altura = alturaDoSensor - microsegundosParaCentimetros(duracao);
+    if(altura < 0){
+      altura = 0; 
+    }  
     int umidadeSolo = analogRead(A0);
     int umidadeSoloAjustada = map(constrain(umidadeSolo, 0, 876), 0, 876, 0, 100);
-	Serial.println(umidadeSolo);
+    Serial.println(umidadeSolo);
     float umidadeSoloMedia, alturaMedia;
     atualizaMedias(umidadeSoloAjustada, altura, umidadeSoloMedia, alturaMedia);
 
