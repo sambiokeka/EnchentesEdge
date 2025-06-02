@@ -88,7 +88,7 @@ void setup() {
 }
 
 void processaUmidadeSOLO(float umidadeSoloMedia) {
-  if (umidadeSoloMedia < 80) {
+  if (umidadeSoloMedia < 60) {
     casoAtualUmidadeSOLO = "1";
   } else {
     casoAtualUmidadeSOLO = "3";
