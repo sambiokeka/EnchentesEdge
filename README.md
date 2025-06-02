@@ -1,6 +1,6 @@
 # Medidor de Nível da Água
 
-Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônico (HC-SR04) e um sensor de umidade do ar (DHT11), integrados com o Arduino UNO, para monitorar o nível da água em enchentes. O sistema aciona LEDs, um buzzer e dois displays LCD com base nas condições medidas.
+Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônico (HC-SR04) e um sensor de umidade do solo, integrados com o Arduino UNO, para monitorar o nível da água em enchentes e a previsão de ela diminuir ou aumentar. O sistema aciona LEDs, um buzzer e dois displays LCD com base nas condições medidas.
 
 ---
 
@@ -23,14 +23,14 @@ Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônic
 
 ## Descrição Geral
 
-O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Global Solution, com o objetivo de auxiliar civis em situações de alagamento em áreas residenciais. O sistema monitora em tempo real a altura da água e a umidade do ar, apresentando essas informações nos displays LCD e acionando alertas visuais e sonoros.
+O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Global Solution, com o objetivo de auxiliar civis em situações de alagamento em áreas residenciais. O sistema monitora em tempo real a altura da água e a umidade do solo, apresentando essas informações nos displays LCD e acionando alertas visuais e sonoros.
 
 ---
 
 ## Funcionalidades
 
 - **Medição do nível da água:** Sensor HC-SR04 calcula a altura da lâmina d'água.  
-- **Medição da umidade atmosférica:** Sensor DHT11 detecta a umidade relativa do ar.  
+- **Medição da umidade atmosférica:** Sensor de umidade do solo detecta a umidade relativa do solo.  
 - **Alertas visuais e sonoros:** LEDs e buzzer indicam o nível de risco.  
 - **Displays LCD:** Exibem o status atual do nível da água e umidade.  
 - **Média móvel:** Leitura contínua e suavizada via buffers circulares.
@@ -43,7 +43,7 @@ O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Glo
 - **3** LEDs (Verde, Amarelo, Vermelho)  
 - **1** Buzzer  
 - **1** Sensor Ultrassônico HC-SR04  
-- **1** Sensor de Umidade DHT11  
+- **1** Sensor de Umidade do Solo  
 - **2** Displays LCD com módulo I2C  
 - **Jumpers** e **protoboard**
 
@@ -93,7 +93,7 @@ Executado a cada ~500ms:
 | Componente           | Pino Arduino |
 |----------------------|--------------|
 | Sensor Ultrassônico  | 7            |
-| Sensor Umidade (DHT11)| A0           |
+| Sensor Umidade       | A0           |
 | LCD 1                | I2C (39)     |
 | LCD 2                | I2C (38)     |
 | LED Verde            | 11           |
