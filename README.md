@@ -1,97 +1,115 @@
-# sensorOndas.ino – Detalhamento do Código
+# Medidor de Nível da Água
 
-Este código Arduino é parte do projeto **EnchentesEdge**, que visa auxiliar civis em situações de alagamentos em ruas residenciais durante chuvas intensas. O programa utiliza sensores de umidade e ultrassônicos para medir o nível da água e umidade do solo, exibindo essas informações em dois displays LCD, acionando LEDs de alerta e um buzzer em situações de risco.
+Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônico (HC-SR04) e um sensor de umidade do ar (DHT11), integrados com o Arduino UNO, para monitorar o nível da água em enchentes. O sistema aciona LEDs, um buzzer e dois displays LCD com base nas condições medidas.
 
 ---
 
 ## Autores
 
-- Erick Jooji (RM: 564482)
-- Luiz Dalboni (RM: 564189)
-- Matheus Tozarelli (RM: 563490)
+- Erick Jooji (RM: 564482)  
+- Luiz Dalboni (RM: 564189)  
+- Matheus Tozarelli (RM: 563490)  
 - Rafael Lorenzini (RM: 563643)
 
 ---
 
 ## Ferramentas e Tecnologias
 
-- **Linguagem de programação:** C++
-- **Placa:** Arduino UNO
-- **Simulação:** [Tinkercad - Projeto SensorLuz](https://www.tinkercad.com/things/1FLMw0RI0Qp/editel?sharecode=3U-bvGk7_IB4qhG56tbSyutXl7edE_MXuUWwf2XKvjU)
+- **Linguagem:** C++  
+- **Placa:** Arduino UNO  
+- **Simulação:** [Tinkercad - Projeto SensorLuz](https://www.tinkercad.com/things/1FLMw0RI0Qp-alarme-2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=3U-bvGk7_IB4qhG56tbSyutXl7edE_MXuUWwf2XKvjU)
 
 ---
 
-## Funcionalidades Principais
+## Descrição Geral
 
-- **Medição do nível da água:** Utiliza um sensor ultrassônico para identificar a altura da água.
-- **Leitura da umidade:** Mede a umidade do solo usando um sensor analógico.
-- **Alertas visuais e sonoros:** LEDs e buzzer sinalizam o grau de perigo de alagamento.
-- **Exibição de informações:** Dois displays LCD mostram o nível da água, a umidade e previsões.
-- **Média móvel:** O sistema suaviza leituras usando buffers circulares para evitar falsos alarmes.
+O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Global Solution, com o objetivo de auxiliar civis em situações de alagamento em áreas residenciais. O sistema monitora em tempo real a altura da água e a umidade do ar, apresentando essas informações nos displays LCD e acionando alertas visuais e sonoros.
+
+---
+
+## Funcionalidades
+
+- **Medição do nível da água:** Sensor HC-SR04 calcula a altura da lâmina d'água.  
+- **Medição da umidade atmosférica:** Sensor DHT11 detecta a umidade relativa do ar.  
+- **Alertas visuais e sonoros:** LEDs e buzzer indicam o nível de risco.  
+- **Displays LCD:** Exibem o status atual do nível da água e umidade.  
+- **Média móvel:** Leitura contínua e suavizada via buffers circulares.
+
+---
+
+## Componentes Utilizados
+
+- **3** Resistores de 220Ω  
+- **3** LEDs (Verde, Amarelo, Vermelho)  
+- **1** Buzzer  
+- **1** Sensor Ultrassônico HC-SR04  
+- **1** Sensor de Umidade DHT11  
+- **2** Displays LCD com módulo I2C  
+- **Jumpers** e **protoboard**
 
 ---
 
 ## Estrutura do Código
 
-### 1. Bibliotecas e Definições
+### 1. Bibliotecas e Configurações Iniciais
 
-- `LiquidCrystal_I2C`: Biblioteca para controle dos displays LCD via I2C.
-- Definições de pinos para sensores, LEDs e buzzer.
+- `LiquidCrystal_I2C`: Comunicação com displays LCD.  
+- Definições dos pinos utilizados e variáveis de controle.
 
 ### 2. Inicialização de Componentes
 
-- Dois objetos `LiquidCrystal_I2C` para os displays.
-- Definição dos pinos dos sensores, LEDs e buzzer.
-- Buffers para armazenar as últimas leituras de umidade e altura.
+- Criação dos objetos dos LCDs.  
+- Definição dos pinos dos sensores, LEDs e buzzer.  
+- Inicialização dos buffers circulares.
 
 ### 3. Funções Principais
 
-#### **microsegundosParaCentimetros**
-Converte o tempo de resposta do sensor ultrassônico em centímetros.
-
-#### **inicializaBuffers**
-Preenche os buffers de médias iniciais para evitar leituras ao ligar.
-
-#### **calculaMedia**
-Calcula a média dos valores em um buffer.
-
-#### **atualizaMedias**
-Atualiza os buffers e calcula as médias de umidade e altura.
-
-#### **processaUmidadeSOLO / processaALTURA**
-Classifica as leituras em cenários de risco (baixa, média ou alta umidade/nível de água).
-
-#### **atualizaDisplay**
-Alterna as informações mostradas nos displays LCD a cada 5 segundos, exibindo:
-- Nível da água e grau de perigo.
-- Umidade e previsão de tendência (aumentar enchente /diminuir enchente).
+- **`microsegundosParaCentimetros()`** – Converte tempo do ultrassônico em centímetros.  
+- **`inicializaBuffers()`** – Preenche buffers com leituras iniciais.  
+- **`calculaMedia()`** – Calcula média de valores em buffers.  
+- **`atualizaMedias()`** – Atualiza e calcula novas médias de leitura.  
+- **`processaUmidadeSOLO()` / `processaALTURA()`** – Classifica risco com base em médias.  
+- **`atualizaDisplay()`** – Alterna conteúdo dos LCDs entre:  
+  - Nível da água e risco.  
+  - Umidade do ar e previsão (subida/queda da enchente).
 
 ### 4. Loop Principal
 
-A cada intervalo (~500ms):
-- Ativa o sensor ultrassônico e lê o tempo de resposta.
-- Lê o sensor de umidade.
-- Calcula médias suavizadas.
-- Determina o nível de risco e atualiza LEDs e buzzer:
-  - **LED Verde:** Nível seguro.
-  - **LED Amarelo:** Atenção (nível médio).
-  - **LED Vermelho + Buzzer rápido:** Perigo (nível alto).
-- Atualiza os displays com as informações atuais.
+Executado a cada ~500ms:
+
+- Ativa o sensor ultrassônico e mede a altura da água.  
+- Lê a umidade com o DHT11.  
+- Calcula as médias e atualiza status de risco.  
+- Aciona o LED correspondente:  
+  - **Verde:** Nível seguro  
+  - **Amarelo:** Alerta  
+  - **Vermelho + Buzzer:** Perigo iminente  
+- Exibe informações nos displays LCD.
 
 ---
 
-## Esquemático de Conexão (Sugestão)
+## Esquemático de Conexão
 
-| Componente         | Pino Arduino |
-|--------------------|-------------|
-| Sensor Ultrassônico| 7           |
-| Sensor Umidade     | A0          |
-| LCD 1              | I2C (39)    |
-| LCD 2              | I2C (38)    |
-| LED Verde          | 11          |
-| LED Amarelo        | 12          |
-| LED Vermelho       | 13          |
-| Buzzer             | 10          |
+| Componente           | Pino Arduino |
+|----------------------|--------------|
+| Sensor Ultrassônico  | 7            |
+| Sensor Umidade (DHT11)| A0           |
+| LCD 1                | I2C (39)     |
+| LCD 2                | I2C (38)     |
+| LED Verde            | 11           |
+| LED Amarelo          | 12           |
+| LED Vermelho         | 13           |
+| Buzzer               | 10           |
 
 ---
 
+## Como Usar
+
+1. Faça upload do código `sensorOndas.ino` para o Arduino UNO.  
+2. Conecte os sensores, LEDs, buzzer e displays conforme a tabela acima.  
+3. Alimente o sistema e monitore os alertas nos displays, LEDs e buzzer.  
+4. O sistema alterna automaticamente entre as leituras de altura e umidade.
+
+---
+
+![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
