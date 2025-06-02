@@ -31,12 +31,12 @@ unsigned long tempoDisplayAnterior = 0;
 unsigned long intervaloSerial = 500;
 unsigned long tempoAnterior = 0;
 
-String casoAtualUMIDADE = "";
+String casoAtualUmidadeSOLO = "";
 String casoAtualALTURA = "";
 
-float umidadeBuffer[5] = {0};
+float umidadeSoloBuffer[5] = {0};
 float alturaBuffer[5] = {0};
-int umidadeIndex = 0;
+int umidadeSoloIndex = 0;
 int alturaIndex = 0;
 
 float microsegundosParaCentimetros(long microsegundos) {
@@ -45,7 +45,7 @@ float microsegundosParaCentimetros(long microsegundos) {
 
 void inicializaBuffers() {
   for (int i = 0; i < 5; i++) {
-    umidadeBuffer[i] = map(analogRead(A2), 0, 1023, 0, 100);
+    umidadeSoloBuffer[i] = map(analogRead(A2), 0, 1023, 0, 100);
     alturaBuffer[i] = 0;
   }
 }
@@ -58,14 +58,14 @@ float calculaMedia(float buffer[], int tamanho) {
   return soma / tamanho;
 }
 
-void atualizaMedias(float umidade, float altura, float &umidadeMedia, float &alturaMedia) {
-  umidadeBuffer[umidadeIndex] = umidade;
-  umidadeIndex = (umidadeIndex + 1) % 5;
+void atualizaMedias(float umidadeSolo, float altura, float &umidadeSoloMedia, float &alturaMedia) {
+  umidadeSoloBuffer[umidadeSoloIndex] = umidadeSolo;
+  umidadeSoloIndex = (umidadeSoloIndex + 1) % 5;
 
   alturaBuffer[alturaIndex] = altura;
   alturaIndex = (alturaIndex + 1) % 5;
 
-  umidadeMedia = calculaMedia(umidadeBuffer, 5);
+  umidadeSoloMedia = calculaMedia(umidadeSoloBuffer, 5);
   alturaMedia = calculaMedia(alturaBuffer, 5);
 }
 
@@ -87,11 +87,11 @@ void setup() {
   
 }
 
-void processaUMIDADE(float umidadeMedia) {
-  if (umidadeMedia < 80) {
-    casoAtualUMIDADE = "1";
+void processaUmidadeSOLO(float umidadeSoloMedia) {
+  if (umidadeSoloMedia < 80) {
+    casoAtualUmidadeSOLO = "1";
   } else {
-    casoAtualUMIDADE = "3";
+    casoAtualUmidadeSOLO = "3";
   }
 }
 
@@ -105,7 +105,7 @@ void processaALTURA(float alturaMedia) {
   }
 }
 
-void atualizaDisplay(float altura, float umidadeMedia) {
+void atualizaDisplay(float altura, float umidadeSoloMedia) {
   unsigned long agora = millis();
 
   if (agora - tempoDisplayAnterior >= 5000) {
@@ -128,12 +128,12 @@ void atualizaDisplay(float altura, float umidadeMedia) {
       break;
 
     case 1:
-      dtostrf(umidadeMedia, 4, 1, buffer2);
-      linha1 = "Umidade:";
+      dtostrf(umidadeSoloMedia, 4, 1, buffer2);
+      linha1 = "Umidade do solo:";
       linha2 = String(buffer2) + "%";
 
       linha3 = "Previsao:";
-      linha4 = (casoAtualUMIDADE == "1") ? "Diminuir" : "Aumentar";
+      linha4 = (casoAtualUmidadeSOLO == "1") ? "Diminuir" : "Aumentar";
       break;
   }
 
@@ -196,15 +196,15 @@ void loop() {
 
     altura = microsegundosParaCentimetros(duracao);
 
-    int umidade = analogRead(A0);
-    int umidadeAjustada = map(constrain(umidade, 0, 1023), 0, 1023, 0, 100);
+    int umidadeSolo = analogRead(A0);
+    int umidadeSoloAjustada = map(constrain(umidadeSolo, 0, 876), 0, 876, 0, 100);
+	Serial.println(umidadeSolo);
+    float umidadeSoloMedia, alturaMedia;
+    atualizaMedias(umidadeSoloAjustada, altura, umidadeSoloMedia, alturaMedia);
 
-    float umidadeMedia, alturaMedia;
-    atualizaMedias(umidadeAjustada, altura, umidadeMedia, alturaMedia);
-
-    processaUMIDADE(umidadeMedia);
+    processaUmidadeSOLO(umidadeSoloMedia);
     processaALTURA(alturaMedia);
 
-    atualizaDisplay(alturaMedia, umidadeMedia);
+    atualizaDisplay(alturaMedia, umidadeSoloMedia);
   }
 }
