@@ -68,6 +68,7 @@ O **Medidor de Enchentes** é parte do projeto da Global Solution, que visa auxi
 - **atualizaMedias:** Atualiza os buffers e calcula as médias de umidade e altura.
 - **processaUMIDADE / processaALTURA:** Classifica as leituras em cenários de risco (baixa, média ou alta umidade/nível de água).
 - **atualizaDisplay:** Alterna as informações mostradas nos displays LCD a cada 5 segundos, exibindo:
+
   - Nível da água e grau de perigo.
   - Umidade do solo e previsão de tendência (aumentar/diminuir enchente).
 
