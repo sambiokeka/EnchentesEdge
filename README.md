@@ -2,6 +2,8 @@
 
 Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônico (HC-SR04) e um sensor de umidade do solo, integrados com o Arduino UNO, para monitorar o nível da água em enchentes e a previsão de ela diminuir ou aumentar. O sistema aciona LEDs, um buzzer e dois displays LCD com base nas condições medidas.
 
+- **Link do video:** https://youtu.be/WvmeCM9WY6k
+
 ---
 
 ## Autores
