@@ -26,6 +26,14 @@ Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônic
 
 O **Medidor de Enchentes** é parte da solução desenvolvida para o projeto Global Solution, com o objetivo de auxiliar civis em situações de alagamento em áreas residenciais. O sistema monitora em tempo real a altura da água e a umidade do solo, apresentando essas informações nos displays LCD e acionando alertas visuais e sonoros.
 
+---
+
+## O Problema das Enchentes
+
+As enchentes representam um dos maiores desafios para áreas urbanas e rurais, especialmente em regiões suscetíveis a chuvas intensas ou com infraestrutura de drenagem insuficiente. Esses eventos podem causar grandes prejuízos materiais, interrupção de serviços essenciais, perda de moradias e, em casos extremos, risco à vida das pessoas. Além disso, a elevação rápida do nível da água pode dificultar a evacuação e o planejamento de respostas de emergência. A ausência de monitoramento em tempo real agrava a vulnerabilidade das comunidades, tornando difícil antecipar situações de perigo e agir preventivamente.
+
+---
+
 ## Solução
 
 Utilizando o sensor de nível de água para monitorar rios ou represas, é possivel sempre estar um passo a frente de imprevistos. Atráves de buzzers, LEDs e LCDs, pessoas ao redor são avisadas, e podem evacuar a área com antecedencia.
@@ -33,7 +41,6 @@ Utilizando o sensor de nível de água para monitorar rios ou represas, é possi
 Além disso, através de um sensor de umidade do solo, que verifica a umidade do terreno, é possivel prever se o nível da água vai aumentar ou diminuir nas próximas horas. 
 
 ![image](https://github.com/user-attachments/assets/3d35cebd-1a18-47d2-8fc5-bf8b82ef8e57)
-
 
 ---
 
@@ -124,3 +131,4 @@ Executado a cada ~500ms:
 ---
 
 ![Exemplo do sistema funcionando](https://github.com/user-attachments/assets/6da0edb6-8746-43d5-b18e-2a621af844fc)
+
