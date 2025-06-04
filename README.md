@@ -103,7 +103,7 @@ Executado a cada ~500ms:
 
 | Componente           | Pino Arduino |
 |----------------------|--------------|
-| Sensor Ultrassônico  | 7 (ver nota abaixo) |
+| Sensor Ultrassônico  | 7            |
 | Sensor Umidade       | A0           |
 | LCD 1                | I2C (39)     |
 | LCD 2                | I2C (38)     |
