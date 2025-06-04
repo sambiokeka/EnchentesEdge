@@ -10,7 +10,6 @@ Este projeto utiliza sensores de luz (LDR), um sensor de distância ultrassônic
 
 - Erick Jooji (RM: 564482)  
 - Luiz Dalboni (RM: 564189)  
-- Matheus Tozarelli (RM: 563490)  
 - Rafael Lorenzini (RM: 563643)
 
 ---
